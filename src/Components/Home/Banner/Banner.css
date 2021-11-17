@@ -1,9 +1,11 @@
 .Banner_Container{
     width: 100%;
     background: #FF4E03;
-    height: 400px;
+    height: auto;
     display: flex;
     align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 .Banner_Box{
     width: 100%;
@@ -16,6 +18,8 @@
     font-style: normal;
     font-weight: normal;
     font-size: 54px;
+    width: 80%;
+    margin: auto;
     line-height: 57px;
     text-align: center;
     letter-spacing: -0.03em;
@@ -50,6 +54,8 @@
         font-style: normal;
         font-weight: normal;
         font-size: 40px;
+        width: 80%;
+        margin: auto;
         line-height: 99%;
         text-align: center;
         letter-spacing: -0.03em;
@@ -74,6 +80,8 @@
         width: 90%;
     }
     .Banner_Container{
-        height: 350px;
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 }
