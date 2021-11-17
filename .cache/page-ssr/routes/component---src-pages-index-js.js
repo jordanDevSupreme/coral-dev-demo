@@ -117,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_page_data_sq_d_3958833797_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/3958833797.json */ "./public/page-data/sq/d/3958833797.json");
+/* harmony import */ var _public_page_data_sq_d_315735111_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/315735111.json */ "./public/page-data/sq/d/315735111.json");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Banner_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Banner.css */ "./src/Components/Home/Banner/Banner.css");
@@ -127,9 +127,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Banner = () => {
-  const data = _public_page_data_sq_d_3958833797_json__WEBPACK_IMPORTED_MODULE_0__.data;
-  const spotlightnoimage = data.allContentfulSpotlightNoImage.nodes;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null, spotlightnoimage.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+  const data = _public_page_data_sq_d_315735111_json__WEBPACK_IMPORTED_MODULE_0__.data;
+  const spotlightnoimage = data.allContentfulIndex.nodes[0].content;
+  const filter = spotlightnoimage.filter(el => el.headline != undefined ? true : false);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null, filter.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "Banner_Container",
     key: i
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
@@ -161,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_page_data_sq_d_311385206_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/311385206.json */ "./public/page-data/sq/d/311385206.json");
+/* harmony import */ var _public_page_data_sq_d_4161676819_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/4161676819.json */ "./public/page-data/sq/d/4161676819.json");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Body_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Body.css */ "./src/Components/Home/Body/Body.css");
@@ -173,11 +174,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Body = () => {
-  const data = _public_page_data_sq_d_311385206_json__WEBPACK_IMPORTED_MODULE_0__.data;
-  const spotlight = data.allContentfulSpotlight.nodes;
+  const data = _public_page_data_sq_d_4161676819_json__WEBPACK_IMPORTED_MODULE_0__.data;
+  const spotlight = data.allContentfulIndex.nodes[0];
+  const filter = spotlight.content.filter(el => el.headline != undefined ? true : false);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "Body_Container"
-  }, spotlight.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+  }, filter.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "Body_Box",
     key: i
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
@@ -215,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_page_data_sq_d_2853960876_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/2853960876.json */ "./public/page-data/sq/d/2853960876.json");
+/* harmony import */ var _public_page_data_sq_d_2162472137_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/2162472137.json */ "./public/page-data/sq/d/2162472137.json");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Header_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header.css */ "./src/Components/Home/Header/Header.css");
@@ -225,11 +227,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Header = () => {
-  const data = _public_page_data_sq_d_2853960876_json__WEBPACK_IMPORTED_MODULE_0__.data;
-  const getHomeData = data.allContentfulIntroHeaderComponent.nodes;
+  //   const data = useStaticQuery(graphql`
+  //   query HeaderHome {
+  //       allContentfulIntroHeaderComponent {
+  //           nodes {
+  //             title
+  //             image {
+  //               fluid {
+  //                 src
+  //               }
+  //             }
+  //             cta {
+  //               title
+  //               url
+  //             }
+  //             subTitle {
+  //               childMarkdownRemark {
+  //                 html
+  //               }
+  //             }
+  //           }
+  //         }
+  //     }
+  // `);
+  const data = _public_page_data_sq_d_2162472137_json__WEBPACK_IMPORTED_MODULE_0__.data;
+  const getHomeData = data.allContentfulIndex.edges[0].node.content;
+  const filter = getHomeData.filter(el => el.title != undefined ? true : false);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "Header_Container"
-  }, getHomeData.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+  }, filter.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     key: i,
     className: "Header_box"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
@@ -272,7 +298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_page_data_sq_d_1375217672_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/1375217672.json */ "./public/page-data/sq/d/1375217672.json");
+/* harmony import */ var _public_page_data_sq_d_4141240076_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/page-data/sq/d/4141240076.json */ "./public/page-data/sq/d/4141240076.json");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _HeroContent_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HeroContent.css */ "./src/Components/Home/HeroContent/HeroContent.css");
@@ -284,28 +310,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeroContent = () => {
-  const data = _public_page_data_sq_d_1375217672_json__WEBPACK_IMPORTED_MODULE_0__.data;
-  const threecolumn = data.allContentfulThreeColumnComponent.nodes[0];
+  const data = _public_page_data_sq_d_4141240076_json__WEBPACK_IMPORTED_MODULE_0__.data;
+  const threecolumn = data.allContentfulIndex.nodes[0].content;
+  const filter = threecolumn.filter(el => el.title != undefined ? true : false);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "Hero_Container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "Hero_box"
+  }, filter.map((els, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "Hero_box",
+    key: i
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", {
     className: "Hero_Heading"
-  }, threecolumn.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+  }, els.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "Hero_display"
-  }, threecolumn.content.map((el, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "box_outline"
+  }, els.content.map((el, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "box_outline",
+    key: index
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
     className: "HeroImage",
-    src: _static_Images_ICN_Personalized_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+    src: el.image.file.url,
     alt: "no image"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", {
     className: "Hero_desc",
     dangerouslySetInnerHTML: {
       __html: el.bodyCopy.childMarkdownRemark.html
     }
-  })))))));
+  }))))))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HeroContent);
@@ -764,17 +793,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./public/page-data/sq/d/1375217672.json":
-/*!***********************************************!*\
-  !*** ./public/page-data/sq/d/1375217672.json ***!
-  \***********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"data":{"allContentfulThreeColumnComponent":{"nodes":[{"title":"What we do","content":[{"bodyCopy":{"childMarkdownRemark":{"html":"<p>Deliver personalized (and private) health screenings right to your door.</p>"}},"image":{"title":"icn-personalized","fluid":null}},{"bodyCopy":{"childMarkdownRemark":{"html":"<p>Connect you to a Coral Health co-pilot to guide you through the process.</p>"}},"image":{"title":"icn-guide","fluid":null}},{"bodyCopy":{"childMarkdownRemark":{"html":"<p>Provide helpful resources so you’re empowered to make informed health decisions.</p>"}},"image":{"title":"icn-resources","fluid":null}}]}]}}}');
-
-/***/ }),
-
 /***/ "./public/page-data/sq/d/2016699106.json":
 /*!***********************************************!*\
   !*** ./public/page-data/sq/d/2016699106.json ***!
@@ -786,14 +804,14 @@ module.exports = JSON.parse('{"data":{"allContentfulGlobalNavigation":{"nodes":[
 
 /***/ }),
 
-/***/ "./public/page-data/sq/d/2853960876.json":
+/***/ "./public/page-data/sq/d/2162472137.json":
 /*!***********************************************!*\
-  !*** ./public/page-data/sq/d/2853960876.json ***!
+  !*** ./public/page-data/sq/d/2162472137.json ***!
   \***********************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"data":{"allContentfulIntroHeaderComponent":{"nodes":[{"title":"Fostering equality  in healthcare.","image":{"fluid":{"src":"https://images.ctfassets.net/fq3gduos4a1t/73jUuTZXkoEv7oL7fSKBmv/2b0572d28b387103aa24f378a81735c6/Headerimage.jpg?w=800&q=50"}},"cta":{"title":"Get Started","url":"www.goerie.com"},"subTitle":{"childMarkdownRemark":{"html":"<p>Chroma connects diverse communities to better, more empathetic care. Think of us as a guide to better healthcare experiences.</p>"}}}]}}}');
+module.exports = JSON.parse('{"data":{"allContentfulIndex":{"edges":[{"node":{"id":"62fba5f0-2efb-541f-8f8e-ef72b32fa4f0","content":[{"title":"Fostering equality  in healthcare.","subTitle":{"childMarkdownRemark":{"html":"<p>Chroma connects diverse communities to better, more empathetic care. Think of us as a guide to better healthcare experiences.</p>"}},"image":{"fluid":{"src":"https://images.ctfassets.net/fq3gduos4a1t/73jUuTZXkoEv7oL7fSKBmv/2b0572d28b387103aa24f378a81735c6/Headerimage.jpg?w=800&q=50"}},"cta":{"title":"Get Started","url":"www.goerie.com"}},{},{},{}]}}]}}}');
 
 /***/ }),
 
@@ -808,25 +826,36 @@ module.exports = JSON.parse('{"data":{"site":{"siteMetadata":{"title":"Gatsby Co
 
 /***/ }),
 
-/***/ "./public/page-data/sq/d/311385206.json":
+/***/ "./public/page-data/sq/d/315735111.json":
 /*!**********************************************!*\
-  !*** ./public/page-data/sq/d/311385206.json ***!
+  !*** ./public/page-data/sq/d/315735111.json ***!
   \**********************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"data":{"allContentfulSpotlight":{"nodes":[{"cta":{"title":"Learn More","url":"https://www.google.com/"},"image":{"fluid":{"src":"https://images.ctfassets.net/fq3gduos4a1t/300ElIlT8FlzXOl8suBxNu/f340ac6a66a076e89963f49077a50a74/spotlight-heroimage.png?w=800&q=50"}},"headline":"Empowering you to truly be their advocate.","description":{"childMarkdownRemark":{"html":"<p>Coral Health is an actionable way to embody your diversity, equity, and inclusion commitment by helping culturally-diverse people within your organization feel a sense of safety, understanding and belonging in healthcare situations.</p>"}}}]}}}');
+module.exports = JSON.parse('{"data":{"allContentfulIndex":{"nodes":[{"content":[{},{},{},{"id":"695f6048-5bba-5e44-8a9d-321125808e55","cta":{"url":"https://www.aol.com/","title":"Learn More"},"headline":"Headline Goes Here","description":{"childMarkdownRemark":{"html":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus sed sollicitudin in blandit id pharetra pellentesque consequat.</p>"}}}]}]}}}');
 
 /***/ }),
 
-/***/ "./public/page-data/sq/d/3958833797.json":
+/***/ "./public/page-data/sq/d/4141240076.json":
 /*!***********************************************!*\
-  !*** ./public/page-data/sq/d/3958833797.json ***!
+  !*** ./public/page-data/sq/d/4141240076.json ***!
   \***********************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"data":{"allContentfulSpotlightNoImage":{"nodes":[{"cta":{"title":"Learn More","url":"https://www.aol.com/"},"description":{"childMarkdownRemark":{"html":"<p>When visiting a healthcare facility, your health should be your only concern, not what the doctor thinks of you, how they will treat you, and whether they will listen.</p>\\n<p>We’ve been in these situations,  understand—and empathize with—marginalized communities who feel a deep mistrust in healthcare environments. We know what it’s like to feel invisible, overlooked, and not listened to, and we\'re here to change that.</p>\\n<p>Everyone deserves high-quality healthcare and the opportunity to feel seen—and heard—in medical spaces. But, in practice, we find that isn’t always the case.</p>\\n<p>Through access to preventative screenings, vetted culturally-competent providers, and resources to make empowered health decisions, Chroma is out to revolutionize the way culturally diverse people engage with healthcare.</p>"}},"headline":"Introducing healthcare  that meets you where  you are—as you are."},{"cta":{"title":"Learn More","url":"https://www.aol.com/"},"description":{"childMarkdownRemark":{"html":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus sed sollicitudin in blandit id pharetra pellentesque consequat.</p>"}},"headline":"Headline Goes Here"}]}}}');
+module.exports = JSON.parse('{"data":{"allContentfulIndex":{"nodes":[{"content":[{},{"id":"04ca15cb-cf6f-59cd-a6ed-3a5535e9f9f1","title":"What we do","content":[{"image":{"file":{"url":"//images.ctfassets.net/fq3gduos4a1t/4OxWft3DPnSymoulYygzLc/3816b36a87429829c456c00c463165bb/icn-personalized.svg"}},"bodyCopy":{"childMarkdownRemark":{"html":"<p>Deliver personalized (and private) health screenings right to your door.</p>"}}},{"image":{"file":{"url":"//images.ctfassets.net/fq3gduos4a1t/fKhFJxCnOuPUtC5wlGD7k/6b29d75c4fe28be8594ea4a4edf33f7a/icn-guide.svg"}},"bodyCopy":{"childMarkdownRemark":{"html":"<p>Connect you to a Coral Health co-pilot to guide you through the process.</p>"}}},{"image":{"file":{"url":"//images.ctfassets.net/fq3gduos4a1t/2Dnv8e7ME7OnWuu89v707s/c4af077c3846739c3ca22c1aafe19619/icn-resources.svg"}},"bodyCopy":{"childMarkdownRemark":{"html":"<p>Provide helpful resources so you’re empowered to make informed health decisions.</p>"}}}]},{},{}]}]}}}');
+
+/***/ }),
+
+/***/ "./public/page-data/sq/d/4161676819.json":
+/*!***********************************************!*\
+  !*** ./public/page-data/sq/d/4161676819.json ***!
+  \***********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"data":{"allContentfulIndex":{"nodes":[{"content":[{},{},{"id":"1f2ed5c9-f31e-55f4-b49c-38152a8bc885","cta":{"url":"https://www.google.com/","title":"Learn More"},"description":{"childMarkdownRemark":{"html":"<p>Coral Health is an actionable way to embody your diversity, equity, and inclusion commitment by helping culturally-diverse people within your organization feel a sense of safety, understanding and belonging in healthcare situations.</p>"}},"headline":"Empowering you to truly be their advocate.","image":{"fluid":{"src":"https://images.ctfassets.net/fq3gduos4a1t/300ElIlT8FlzXOl8suBxNu/f340ac6a66a076e89963f49077a50a74/spotlight-heroimage.png?w=800&q=50"}}},{}]}]}}}');
 
 /***/ })
 
